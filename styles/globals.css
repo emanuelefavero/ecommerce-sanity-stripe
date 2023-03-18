@@ -136,6 +136,7 @@ span.text-red {
   height: 500px;
   line-height: 0.9;
   width: 100%;
+  z-index: -2;
 }
 .hero-banner-container .beats-solo {
   font-size: 20px;
@@ -169,6 +170,7 @@ span.text-red {
   right: 20%;
   width: 450px;
   height: 450px;
+  z-index: -1;
 }
 
 .desc {
@@ -606,6 +608,12 @@ span.text-red {
 }
 .product-max-qty {
   margin-top: 10px;
+}
+
+@media screen and (max-width: 1040px) {
+  .hero-banner-image {
+    opacity: 0.6;
+  }
 }
 
 @media screen and (max-width: 800px) {
