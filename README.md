@@ -4,7 +4,13 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 
 > Note: This is a work in progress. The application is not yet complete.
 
-## How to create a new project like this
+&nbsp;
+
+---
+
+&nbsp;
+
+## **How to create a new project**
 
 - create a new directory: `mkdir PROJECT-NAME` and `cd PROJECT-NAME`
 - create a new nextjs app in the current directory: `npx create-next-app .`
@@ -16,15 +22,29 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 npm install @sanity/client @sanity/image-url @stripe/stripe-js canvas-confetti next-sanity-image react-hot-toast react-icons stripe
 ```
 
+&nbsp;
+
+## Create a new Sanity project
+
 - create a new Sanity project: `npm create sanity@latest -- --template clean --create-project "PROJECT-NAME" --dataset production`
 
 > Note: You will need to create a Sanity account if you don't have one already.
+>
+> This command will create a new Sanity project in the current directory.
 
-- run sanity studio locally: `npm run dev` or `sanity start`
+&nbsp;
+
+## Run Sanity Studio locally
+
+- `cd` into sanity project folder before running: `npm run dev` or `sanity start`
 
 > Note: Head over to [http://localhost:3333](http://localhost:3333) to see the Sanity Studio.
 
-- create a new schema in the `schemas` folder which is located inside the sanity project that was created in your project directory:
+&nbsp;
+
+## Create a new schema and content
+
+- create a new schema in the `schemas` folder which is located inside the Sanity project that was created in your project directory:
 
 ```ts
 export default {
@@ -70,7 +90,7 @@ export default {
 }
 ```
 
-- import the schema in the `schemas/index.js` file:
+- import and export the schema in the `schemas/index.ts` file:
 
 ```ts
 import product from './product'
@@ -78,9 +98,14 @@ import product from './product'
 export const schemaTypes = [product]
 ```
 
-- create content in the Sanity Studio and publish it.
+- create content in the Sanity Studio Dashboard at [http://localhost:3333](http://localhost:3333)
+  and publish it.
 
-- connect your app to the Sanity project by creating a `lib/client.js` file at the root of your project directory with the following code:
+&nbsp;
+
+## Connect your app to Sanity
+
+- create a `lib/client.js` file at the root of your project directory with the following code:
 
 ```js
 import sanityClient from '@sanity/client'
@@ -114,6 +139,10 @@ export const urlFor = (source) => builder.image(source)
 
 > Note: Remember to add the `NEXT_PUBLIC_SANITY_TOKEN` to your `.env` file.
 
+&nbsp;
+
+## Fetch Sanity data
+
 - fetch data from Sanity in your pages with getServerSideProps (or getStaticProps if you want to use static generation):
 
 ```js
@@ -145,9 +174,23 @@ export default function Home({ products }) {
 }
 ```
 
-## Useful Sanity Studio commands
+&nbsp;
 
-- `sanity start` - starts the Sanity Studio locally
+---
+
+&nbsp;
+
+## Useful Sanity commands
+
 - `npm run dev` - starts the Sanity Studio locally
+- `sanity start` - starts the Sanity Studio locally
 - `sanity docs` - opens the Sanity Studio documentation
 - `sanity manage` - opens the Sanity project management dashboard
+
+&nbsp;
+
+---
+
+&nbsp;
+
+[**Go To Top &nbsp; ⬆️**](#e-commerce-sanity-stripe)
