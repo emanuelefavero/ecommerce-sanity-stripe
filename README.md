@@ -196,6 +196,7 @@ export default function Home({ products }) {
 - `sanity start` - starts the Sanity Studio locally
 - `sanity docs` - opens the Sanity Studio documentation
 - `sanity manage` - opens the Sanity project management dashboard
+- `cmd/ctrl + shift + r` - in the browser to refresh the page and clear the cache (useful when you make changes to the Sanity data)
 
 &nbsp;
 
