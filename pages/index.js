@@ -26,10 +26,10 @@ export default function Home({ products, bannerData }) {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   // Fetch all products and banner in the Sanity dataset
-  const products = await client.fetch('*[_type == "product"]')
-  const bannerData = await client.fetch('*[_type == "banner"]')
+  const products = await client.fetch(`*[_type == "product"]`)
+  const bannerData = await client.fetch(`*[_type == "banner"]`)
 
   return {
     props: {

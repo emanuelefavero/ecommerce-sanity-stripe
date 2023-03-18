@@ -8,7 +8,7 @@ export default function Navbar() {
         <Link href='/'>Ecommerce</Link>
       </p>
 
-      <button type='button' className='cart-icon' onClick=''>
+      <button type='button' className='cart-icon'>
         <AiOutlineShopping />
         <span className='cart-item-qty'>1</span>
       </button>
