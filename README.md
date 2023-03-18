@@ -4,6 +4,16 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 
 > Note: This is a work in progress. The application is not yet complete.
 
+## Table of Contents
+
+- [**How to create a new project**](#how-to-create-a-new-project)
+- [Create a new Sanity project](#create-a-new-sanity-project)
+- [Run Sanity Studio locally](#run-sanity-studio-locally)
+- [Create a new schema and content](#create-a-new-schema-and-content)
+- [Connect your app to Sanity](#connect-your-app-to-sanity)
+- [Fetch Sanity data](#fetch-sanity-data)
+- [Useful Sanity commands](#useful-sanity-commands)
+
 &nbsp;
 
 ---
