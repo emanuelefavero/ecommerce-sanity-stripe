@@ -8,11 +8,16 @@ import {
 } from 'react-icons/ai'
 import { Product } from '@/components'
 
+import { useStateContext } from '@/context/StateContext'
+
 // Import the Sanity client
 import { client, urlFor } from '@/lib/client'
 
 // -< ProductDetail >- component
 export default function ProductDetail({ product, products }) {
+  // Get the state from the context
+  const { qty, decQty, incQty, onAdd } = useStateContext()
+
   // Destructure the product object
   const { image, name, details, price } = product
   // State to keep track of which image is selected
@@ -67,17 +72,23 @@ export default function ProductDetail({ product, products }) {
           <div className='quantity'>
             <h3>Quantity:</h3>
             <p className='quantity-desc'>
-              <span className='minus'>
+              <span className='minus' onClick={decQty}>
                 <AiOutlineMinus />
               </span>
-              <span className='num'>0</span>
-              <span className='plus'>
+              <span className='num'>{qty}</span>
+              <span className='plus' onClick={incQty}>
                 <AiOutlinePlus />
               </span>
             </p>
           </div>
           <div className='buttons'>
-            <button type='button' className='add-to-cart'>
+            <button
+              type='button'
+              className='add-to-cart'
+              onClick={() => {
+                onAdd(product, qty)
+              }}
+            >
               Add to Cart
             </button>
             <button type='button' className='buy-now'>
