@@ -1,37 +1,54 @@
 /* eslint-disable @next/next/no-img-element */
+import { useState } from 'react'
 import {
   AiOutlineMinus,
   AiOutlinePlus,
   AiFillStar,
   AiOutlineStar,
 } from 'react-icons/ai'
-
-import { client, urlFor } from '@/lib/client'
 import { Product } from '@/components'
 
+// Import the Sanity client
+import { client, urlFor } from '@/lib/client'
+
+// -< ProductDetail >- component
 export default function ProductDetail({ product, products }) {
+  // Destructure the product object
   const { image, name, details, price } = product
+  // State to keep track of which image is selected
+  const [index, setIndex] = useState(0)
+
   return (
     <div>
       <div className='product-detail-container'>
         <div>
+          {/* Product - main image (also the image that a user has selected) */}
           <div className='image-container'>
-            <img src={urlFor(image && image[0])} alt={`${name}`} />
+            <img
+              src={urlFor(image && image[index])}
+              alt={`${name}`}
+              className='product-detail-image'
+            />
           </div>
 
-          {/* <div className='small-images-container'>
+          {/* Product - all images that a user can select to view */}
+          <div className='small-images-container'>
             {image?.map((item, i) => (
               <img
                 key={i}
                 src={urlFor(item)}
-                className=''
-                onMouseEnter=''
+                className={
+                  i === index ? 'small-image selected-image' : 'small-image'
+                }
+                // select image on mouse enter (hover state on desktop, click on mobile)
+                onMouseEnter={() => setIndex(i)}
                 alt={`${i} ${name}`}
               />
             ))}
-          </div> */}
+          </div>
         </div>
 
+        {/* Product - details */}
         <div className='product-detail-desc'>
           <h1>{name}</h1>
           <div className='reviews'>
@@ -70,6 +87,7 @@ export default function ProductDetail({ product, products }) {
         </div>
       </div>
 
+      {/* "You may also like" section - marquee of images */}
       <div className='maylike-products-wrapper'>
         <h2>You may also like</h2>
         <div className='marquee'>
@@ -84,6 +102,8 @@ export default function ProductDetail({ product, products }) {
   )
 }
 
+// -< getStaticPaths >- and -< getStaticProps >- methods
+// Fetch all products from sanity to generate paths (needed for SSG below)
 export const getStaticPaths = async () => {
   const products = await client.fetch(`*[_type == "product"]`)
 
@@ -102,6 +122,7 @@ export const getStaticPaths = async () => {
   }
 }
 
+// Fetch the product from sanity that matches the slug in the url
 // SSG is ideal for headless CMSs like Sanity
 export const getStaticProps = async ({ params: { slug } }) => {
   const product = await client.fetch(
