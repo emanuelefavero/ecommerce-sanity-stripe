@@ -10,6 +10,9 @@ export const StateContext = ({ children }) => {
   const [totalQuantities, setTotalQuantities] = useState(0)
   const [qty, setQty] = useState(1)
 
+  let foundProduct
+  let index
+
   // When the user adds a product to the cart
   const onAdd = (product, quantity) => {
     // Find the item in the cart
@@ -47,6 +50,35 @@ export const StateContext = ({ children }) => {
     toast.success(`${qty} ${product.name} added to cart`)
   }
 
+  const toggleCartItemQuantity = (id, value) => {
+    foundProduct = cartItems.find((item) => item._id === id)
+    index = cartItems.findIndex((product) => product._id === id) // found index
+
+    if (value === 'inc') {
+      setCartItems([
+        ...cartItems, // spread the cart items
+        {
+          ...foundProduct, // spread the product values
+          quantity: foundProduct.quantity + 1, // increase the quantity value by 1
+        },
+      ])
+      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
+      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1)
+    } else if (value === 'dec') {
+      if (foundProduct.quantity > 1) {
+        setCartItems([
+          ...cartItems,
+          {
+            ...foundProduct,
+            quantity: foundProduct.quantity - 1,
+          },
+        ])
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
+      }
+    }
+  }
+
   const incQty = () => {
     setQty((prevQty) => prevQty + 1)
   }
@@ -70,6 +102,7 @@ export const StateContext = ({ children }) => {
         incQty,
         decQty,
         onAdd,
+        toggleCartItemQuantity,
       }}
     >
       {children}
