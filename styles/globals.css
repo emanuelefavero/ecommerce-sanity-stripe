@@ -518,6 +518,7 @@ span.text-red {
 .quantity-desc {
   border: 1px solid gray;
   padding: 6px;
+  user-select: none;
 }
 .quantity-desc span {
   font-size: 16px;
