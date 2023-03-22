@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   AiOutlineMinus,
   AiOutlinePlus,

@@ -15,8 +15,14 @@ import { urlFor } from '@/lib/client' // sanity image url
 
 export default function Cart() {
   const cartRef = useRef()
-  const { totalPrice, totalQuantities, cartItems, setShowCart } =
-    useStateContext()
+  const {
+    totalPrice,
+    totalQuantities,
+    cartItems,
+    setShowCart,
+    toggleCartItemQuantity,
+    removeCartItem,
+  } = useStateContext()
 
   return (
     <div>
@@ -68,16 +74,30 @@ export default function Cart() {
                     <div className='flex bottom'>
                       <div>
                         <p className='quantity-desc'>
-                          <span className='minus'>
+                          <span
+                            className='minus'
+                            onClick={() =>
+                              toggleCartItemQuantity(item._id, 'dec')
+                            }
+                          >
                             <AiOutlineMinus />
                           </span>
-                          <span className='num'>0</span>
-                          <span className='plus'>
+                          <span className='num'>{item.quantity}</span>
+                          <span
+                            className='plus'
+                            onClick={() =>
+                              toggleCartItemQuantity(item._id, 'inc')
+                            }
+                          >
                             <AiOutlinePlus />
                           </span>
                         </p>
                       </div>
-                      <button type='button' className='remove-item'>
+                      <button
+                        type='button'
+                        className='remove-item'
+                        onClick={() => removeCartItem(item._id)}
+                      >
                         <TiDeleteOutline />
                       </button>
                     </div>
