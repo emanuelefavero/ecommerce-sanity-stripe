@@ -6,6 +6,7 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 
 ## Table of Contents
 
+- [How to run this project locally](#how-to-run-this-project-locally)
 - [**How to create a new project**](#how-to-create-a-new-project)
 - [Create a new Sanity project](#create-a-new-sanity-project)
 - [Run Sanity Studio locally](#run-sanity-studio-locally)
@@ -13,6 +14,19 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 - [Connect your app to Sanity](#connect-your-app-to-sanity)
 - [Fetch Sanity data](#fetch-sanity-data)
 - [Useful Sanity commands](#useful-sanity-commands)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## How to run this project locally
+
+- clone this repo and `cd` into it
+- run `npm run dev` to start Next.js
+- open a new terminal tab, `cd` into the `sanity-ecommerce` folder and run `npm run dev` to start Sanity Studio
+- go to [http://localhost:3000](http://localhost:3000) to see the app
 
 &nbsp;
 
