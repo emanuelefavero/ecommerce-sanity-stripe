@@ -101,6 +101,8 @@ export default function ProductDetail({ product, products }) {
       {/* "You may also like" section - marquee of images */}
       <div className='maylike-products-wrapper'>
         <h2>You may also like</h2>
+
+        {/* TODO: Add a marquee react library for infinite scrolling */}
         <div className='marquee'>
           <div className='maylike-products-container track'>
             {products.map((item) => (

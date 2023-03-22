@@ -48,8 +48,8 @@ a {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 15s linear infinite;
-  width: 180%;
+  animation: marquee 20s linear infinite;
+  width: 270%;
 }
 .track:hover {
   animation-play-state: paused;
@@ -59,7 +59,7 @@ a {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-70%);
   }
 }
 
