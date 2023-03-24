@@ -29,7 +29,6 @@ export default function Cart() {
   const handleCheckout = async () => {
     const stripe = await getStripe()
 
-    // ! try to add the server file for handling dev and prod urls
     const response = await fetch('/api/stripe', {
       method: 'POST',
       headers: {
@@ -135,6 +134,7 @@ export default function Cart() {
                 <h3>${totalPrice}</h3>
               </div>
               <div className='btn-container'>
+                {/* STRIPE CHECKOUT BUTTON */}
                 <button type='button' className='btn' onClick={handleCheckout}>
                   Pay with Stripe
                 </button>
