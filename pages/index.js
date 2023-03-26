@@ -36,5 +36,11 @@ export const getStaticProps = async () => {
       products,
       bannerData,
     },
+
+    // TODO: Change this if the application needs to be updated more frequently or less or not at all
+    // Revalidate at most once per 60 seconds
+    revalidate: 60,
+
+    // TIP: The rate of revalidation is a tradeoff between the freshness of the data and the performance of the page
   }
 }

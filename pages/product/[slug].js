@@ -158,5 +158,9 @@ export const getStaticProps = async ({ params: { slug } }) => {
       product,
       products,
     },
+
+    // TODO: Change this if the application needs to be updated more frequently or less or not at all
+    // Revalidate at most once per one hour
+    revalidate: 60,
   }
 }
