@@ -198,6 +198,56 @@ export default function Home({ products }) {
 }
 ```
 
+## Setup Revalidation
+
+> Note: When we use SSG the page is generated at build time so when we make changes to the Sanity data, the page will not be updated. To solve this we can use revalidation.
+
+- add `revalidate: 1` to the props of the page component:
+
+```js
+return {
+  props: {
+    products,
+  },
+  // revalidate every 60 second
+  revalidate: 60,
+}
+```
+
+> IMPORTANT!: Choose the value according to your needs. If you need the data to be updated frequently, choose a lower value. If you don't need the data to be updated frequently, choose a higher value.
+>
+> 60 = 1 minute, 3600 = 1 hour, 86400 = 1 day
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## **Setup Stripe**
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Deploy App to Vercel
+
+- remember to add the following environment variables to Vercel:
+
+```bash
+NEXT_PUBLIC_SANITY_TOKEN
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+NEXT_PUBLIC_STRIPE_SECRET_KEY
+```
+
+## Deploy Sanity Studio
+
+- run `sanity deploy` to deploy the Sanity Studio to the cloud
+- choose a name for your Studio hostname (e.g. `emanuelefavero-ecommerce`)
+- share the link with your team members or clients
+
 &nbsp;
 
 ---
@@ -207,6 +257,8 @@ export default function Home({ products }) {
 ## Useful Sanity commands
 
 - `npm run dev` - starts the Sanity Studio locally
+- `sanity deploy` - deploys the Sanity Studio to the cloud (useful when you want to share the project with others)
+- `sanity help` - shows all the available Sanity commands
 - `sanity start` - starts the Sanity Studio locally
 - `sanity docs` - opens the Sanity Studio documentation
 - `sanity manage` - opens the Sanity project management dashboard
