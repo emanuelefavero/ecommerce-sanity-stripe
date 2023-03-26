@@ -54,8 +54,10 @@ export default async function handler(req, res) {
             quantity: item.quantity,
           }
         }),
-        success_url: `${req.headers.origin}/?success=true`,
-        cancel_url: `${req.headers.origin}/?canceled=true`,
+
+        // ? REDIRECT URLS when stripe checkout is successful or canceled
+        success_url: `${req.headers.origin}/success`,
+        cancel_url: `${req.headers.origin}/canceled`,
         automatic_tax: { enabled: true },
       }
 
