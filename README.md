@@ -8,6 +8,10 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 
 - [https://ecommerce-sanity-stripe-cyan-pi.vercel.app/](https://ecommerce-sanity-stripe-cyan-pi.vercel.app/)
 
+#### screenshot
+
+![screenshot](./screenshot.jpg 'screenshot')
+
 ## Table of Contents
 
 - [How to run this project locally](#how-to-run-this-project-locally)
@@ -17,6 +21,10 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 - [Create a new schema and content](#create-a-new-schema-and-content)
 - [Connect your app to Sanity](#connect-your-app-to-sanity)
 - [Fetch Sanity data](#fetch-sanity-data)
+- [Setup Revalidation](#setup-revalidation)
+- [Setup Stripe](#setup-stripe)
+- [Deploy App to Vercel](#deploy-app-to-vercel)
+- [Deploy Sanity Studio](#deploy-sanity-studio)
 - [Useful Sanity commands](#useful-sanity-commands)
 
 &nbsp;
