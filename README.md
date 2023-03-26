@@ -248,6 +248,8 @@ NEXT_PUBLIC_STRIPE_SECRET_KEY
 - choose a name for your Studio hostname (e.g. `emanuelefavero-ecommerce`)
 - share the link with your team members or clients
 
+> Note: the link for this project is: [this one](https://emanuelefavero-ecommerce.sanity.studio/desk)
+
 &nbsp;
 
 ---
