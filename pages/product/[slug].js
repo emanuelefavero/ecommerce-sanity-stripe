@@ -16,12 +16,18 @@ import { client, urlFor } from '@/lib/client'
 // -< ProductDetail >- component
 export default function ProductDetail({ product, products }) {
   // Get the state from the context
-  const { qty, decQty, incQty, onAdd } = useStateContext()
+  const { qty, decQty, incQty, onAdd, setShowCart } = useStateContext()
 
   // Destructure the product object
   const { image, name, details, price } = product
   // State to keep track of which image is selected
   const [index, setIndex] = useState(0)
+
+  const handleBuyNow = () => {
+    onAdd(product, qty)
+
+    setShowCart(true)
+  }
 
   return (
     <div>
@@ -91,7 +97,7 @@ export default function ProductDetail({ product, products }) {
             >
               Add to Cart
             </button>
-            <button type='button' className='buy-now'>
+            <button type='button' className='buy-now' onClick={handleBuyNow}>
               Buy Now
             </button>
           </div>
