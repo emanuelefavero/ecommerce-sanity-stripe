@@ -172,7 +172,7 @@ export const client = sanityClient({
   // and create a new token with read and write permissions (name it)
   token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
 
-  // This will ignore the browser warning about using the token in the client side (but since we are using .env and nextjs ssr we are safe)
+  // This will ignore the browser warning about using the token in the client side (but since we are using .env.local and nextjs ssr we are safe)
   // sanity docs on this: https://www.sanity.io/help/js-client-browser-token
   ignoreBrowserTokenWarning: true,
 })
@@ -182,7 +182,7 @@ const builder = imageUrlBuilder(client)
 export const urlFor = (source) => builder.image(source)
 ```
 
-> Note: Remember to add the `NEXT_PUBLIC_SANITY_TOKEN` to your `.env` file.
+> Note: Remember to add the `NEXT_PUBLIC_SANITY_TOKEN` to your `.env.local` file.
 
 &nbsp;
 
@@ -259,7 +259,7 @@ return {
 - choose a Stripe Company Name (e.g. `Emanuele Favero`) and continue to the dashboard
 - make sure to enable the `Test mode` so you can test the payment process without actually paying
 - go to the `Developers` section and click on `API keys` ([https://dashboard.stripe.com/test/apikeys](https://dashboard.stripe.com/test/apikeys))
-- copy the `Publishable key` and `Secret key` and add them to your `.env` file:
+- copy the `Publishable key` and `Secret key` and add them to your `.env.local` file:
 
 ```bash
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY='your_stripe_publishable_key'
