@@ -91,6 +91,8 @@ npm install @sanity/client @sanity/image-url @stripe/stripe-js canvas-confetti n
 
 - create a new schema in the `schemas` folder which is located inside the Sanity project that was created in your project directory:
 
+- `schemas/product.ts`
+
 ```ts
 export default {
   name: 'product',
@@ -145,6 +147,8 @@ export const schemaTypes = [product]
 
 - create content in the Sanity Studio Dashboard at [http://localhost:3333](http://localhost:3333)
   and publish it.
+
+> Note: Create as many schemas as you need and import them in the `schemas/index.ts` file.
 
 &nbsp;
 
