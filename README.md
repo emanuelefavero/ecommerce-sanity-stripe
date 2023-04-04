@@ -168,6 +168,9 @@ npm run dev
 - go to [https://www.sanity.io/manage](https://www.sanity.io/manage) and select your project
 - go to the `API tab` and select `Tokens`
 - create a new token with read and write permissions (name it)
+
+> Note: Here you can choose to create a token with read-only permissions if you don't need to update content in Sanity Studio from your app code.
+
 - copy the token
 - add it to the `NEXT_PUBLIC_SANITY_TOKEN` in your `.env.local` file:
 
