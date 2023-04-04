@@ -47,6 +47,7 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 - run `npm run dev` to start Next.js
 - open a new terminal tab, `cd` into the `sanity-ecommerce` folder and run `npm run dev` to start Sanity Studio
 - go to [http://localhost:3000](http://localhost:3000) to see the app
+- go to [http://localhost:3333](http://localhost:3333) to see the Sanity Studio and upload content there
 
 > Note: If you instead need to update content in Sanity Studio for the production version, got to [this link](https://emanuelefavero-ecommerce.sanity.studio/desk)
 
