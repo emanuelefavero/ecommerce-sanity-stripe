@@ -18,7 +18,8 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 - [**How to create a new project**](#how-to-create-a-new-project)
 - [Create a new Sanity project](#create-a-new-sanity-project)
 - [Run Sanity Studio locally](#run-sanity-studio-locally)
-- [Create a new schema and content](#create-a-new-schema-and-content)
+- [Create a new Sanity schema](#create-a-new-sanity-schema)
+- [Upload content to Sanity](#upload-content-to-sanity)
 - [Connect your app to Sanity](#connect-your-app-to-sanity)
 - [Fetch Sanity data](#fetch-sanity-data)
 - [Setup Revalidation](#setup-revalidation)
@@ -87,7 +88,7 @@ npm install @sanity/client @sanity/image-url @stripe/stripe-js canvas-confetti n
 
 &nbsp;
 
-## Create a new schema and content
+## Create a new Sanity schema
 
 - create a new schema in the `schemas` folder which is located inside the Sanity project that was created in your project directory:
 
@@ -145,10 +146,20 @@ import product from './product'
 export const schemaTypes = [product]
 ```
 
-- create content in the Sanity Studio Dashboard at [http://localhost:3333](http://localhost:3333)
-  and publish it.
-
 > Note: Create as many schemas as you need and import them in the `schemas/index.ts` file.
+
+&nbsp;
+
+## Upload content to Sanity
+
+- run the Sanity Studio locally again
+
+```bash
+cd sanity-ecommerce # (or whatever you named your project)
+npm run dev
+```
+
+- open the Sanity Studio Dashboard at [http://localhost:3333](http://localhost:3333) and upload some content
 
 &nbsp;
 
