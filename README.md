@@ -238,7 +238,26 @@ return {
 
 &nbsp;
 
-## **Setup Stripe**
+## **Stripe**
+
+### Install Stripe
+
+- `npm install stripe @stripe/stripe-js`
+
+### Setup Stripe
+
+- create a Stripe account
+- choose a Stripe Company Name (e.g. `Emanuele Favero`) and continue to the dashboard
+- make sure to enable the `Test mode` so you can test the payment process without actually paying
+- go to the `Developers` section and click on `API keys` ([https://dashboard.stripe.com/test/apikeys](https://dashboard.stripe.com/test/apikeys))
+- copy the `Publishable key` and `Secret key` and add them to your `.env` file:
+
+```bash
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY='your_stripe_publishable_key'
+NEXT_PUBLIC_STRIPE_SECRET_KEY='your_stripe_secret_key'
+```
+
+> Note: You can also follow this setup guide on the Stripe docs quickstart page: [https://stripe.com/docs/checkout/quickstart](https://stripe.com/docs/checkout/quickstart)
 
 &nbsp;
 
