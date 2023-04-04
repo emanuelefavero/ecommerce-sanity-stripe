@@ -210,6 +210,8 @@ const builder = imageUrlBuilder(client)
 export const urlFor = (source) => builder.image(source)
 ```
 
+> Remember to add your project id and dataset name for your current Sanity project
+
 &nbsp;
 
 ## Fetch Sanity data
