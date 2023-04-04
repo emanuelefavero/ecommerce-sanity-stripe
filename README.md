@@ -150,6 +150,16 @@ export const schemaTypes = [product]
 
 ## Connect your app to Sanity
 
+- go to [https://www.sanity.io/manage](https://www.sanity.io/manage) and select your project
+- go to the `API tab` and select `Tokens`
+- create a new token with read and write permissions (name it)
+- copy the token
+- add it to the `NEXT_PUBLIC_SANITY_TOKEN` in your `.env.local` file:
+
+```bash
+NEXT_PUBLIC_SANITY_TOKEN='Your sanity API token'
+```
+
 - create a `lib/client.js` file at the root of your project directory with the following code:
 
 ```js
@@ -181,8 +191,6 @@ export const client = sanityClient({
 const builder = imageUrlBuilder(client)
 export const urlFor = (source) => builder.image(source)
 ```
-
-> Note: Remember to add the `NEXT_PUBLIC_SANITY_TOKEN` to your `.env.local` file.
 
 &nbsp;
 
