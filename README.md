@@ -244,6 +244,8 @@ return {
 
 - `npm install stripe @stripe/stripe-js`
 
+&nbsp;
+
 ### Setup Stripe
 
 - create a Stripe account
@@ -257,7 +259,173 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY='your_stripe_publishable_key'
 NEXT_PUBLIC_STRIPE_SECRET_KEY='your_stripe_secret_key'
 ```
 
+&nbsp;
+
+### Create a Stripe API endpoint
+
 > Note: You can also follow this setup guide on the Stripe docs quickstart page: [https://stripe.com/docs/checkout/quickstart](https://stripe.com/docs/checkout/quickstart)
+
+- create a `pages/api/stripe.js` file with the following code:
+
+```js
+import Stripe from 'stripe'
+
+const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY)
+
+// TIP: You can use 4242 4242 4242 4242 as a test card number with 424 as the CVC and any future date for the expiration date in the stripe checkout form for testing purposes
+// TIP: Remember to set stripe to test mode in the dashboard
+// TIP: You can go to the stripe settings / Business settings / Customer emails and enable "Successful payments" to send an email to the customer when the payment is successful (the email will not be sent in test mode)
+
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    // console.log(req.body)
+
+    try {
+      const params = {
+        submit_type: 'pay',
+        mode: 'payment',
+        payment_method_types: ['card'],
+        billing_address_collection: 'auto',
+
+        // Shipping options - create them in the Stripe dashboard and copy the IDs here
+        // @link https://dashboard.stripe.com/test/shipping-rates
+        shipping_options: [
+          // FREE SHIPPING
+          { shipping_rate: 'shr_1Mp2HsKA1UjcyalEY6GCZK8A' },
+        ],
+
+        line_items: req.body.map((item) => {
+          // access sanity image
+          // @link https://www.sanity.io/manage
+          const img = item.image[0].asset._ref
+          const newImage = img
+            .replace(
+              'image-',
+              // NOTE: use sanity project id in the url
+              'https://cdn.sanity.io/images/eglqvky8/production/'
+            )
+            .replace('-webp', '.webp') // NOTE: put .jpg or .png if you don't use webp images
+
+          return {
+            price_data: {
+              currency: 'eur',
+              product_data: {
+                name: item.name,
+                images: [newImage],
+              },
+
+              unit_amount: item.price * 100, // convert price to cents
+            },
+
+            adjustable_quantity: {
+              enabled: true,
+              minimum: 1,
+            },
+            quantity: item.quantity,
+          }
+        }),
+
+        // ? REDIRECT URLS when stripe checkout is successful or canceled
+        success_url: `${req.headers.origin}/success`,
+        cancel_url: `${req.headers.origin}/canceled`,
+        automatic_tax: { enabled: true },
+      }
+
+      // Create Checkout Sessions from body params.
+      const session = await stripe.checkout.sessions.create(params)
+
+      res.status(200).json(session) // return session
+    } catch (err) {
+      res.status(err.statusCode || 500).json(err.message)
+    }
+  } else {
+    res.setHeader('Allow', 'POST')
+    res.status(405).end('Method Not Allowed')
+  }
+}
+```
+
+> Note: Make sure you have a shipping option at [https://dashboard.stripe.com/test/shipping-rates](https://dashboard.stripe.com/test/shipping-rates)
+
+&nbsp;
+
+### Create an instance of Stripe
+
+- create a `lib/getStripe.js` file with the following code:
+
+```js
+import { loadStripe } from '@stripe/stripe-js'
+
+let stripePromise
+
+const getStripe = () => {
+  if (!stripePromise) {
+    stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+  }
+
+  return stripePromise
+}
+
+export default getStripe
+```
+
+&nbsp;
+
+### Create a checkout button
+
+- import the `getStripe` function in your `Cart` component or whenever you need to implement a checkout button
+
+```js
+import getStripe from '../lib/getStripe'
+```
+
+- create a `handleCheckout` function that will handle the checkout process
+
+```js
+// STRIPE CHECKOUT
+const handleCheckout = async () => {
+  const stripe = await getStripe()
+
+  const response = await fetch('/api/stripe', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(cartItems),
+  })
+
+  if (response.statusCode === 500) return
+
+  const data = await response.json()
+
+  toast.loading('Redirecting to checkout...')
+
+  stripe.redirectToCheckout({ sessionId: data.id })
+}
+```
+
+- create a `button` jsx element and add the `onClick` event handler
+
+```js
+<button onClick={handleCheckout}>Checkout</button>
+```
+
+&nbsp;
+
+### Create a success page
+
+- create a `pages/success.js` file to show a success message after the checkout process is completed
+
+### Create a canceled page
+
+- create a `pages/canceled.js` file to show a canceled message after the checkout process is canceled
+
+> Note: These urls are created by Stripe in `pages/api/stripe.js`
+>
+> ```js
+> success_url: `${req.headers.origin}/success`,
+> cancel_url: `${req.headers.origin}/canceled`,
+> ```
 
 &nbsp;
 
