@@ -216,6 +216,12 @@ export const urlFor = (source) => builder.image(source)
 
 ## Fetch Sanity data
 
+- import the `client` from `lib/client.js` in your page component:
+
+```js
+import { client } from '@/lib/client'
+```
+
 - fetch data from Sanity in your pages with getServerSideProps (or getStaticProps if you want to use static generation):
 
 ```js
