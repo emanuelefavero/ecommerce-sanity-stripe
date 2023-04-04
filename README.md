@@ -473,6 +473,10 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 NEXT_PUBLIC_STRIPE_SECRET_KEY
 ```
 
+- add the vercel website url to the Sanity project management dashboard `API > CORS origins > + Add CORS origin`
+
+> Here: [https://www.sanity.io/manage](https://www.sanity.io/manage) (Click on your project name)
+
 ## Deploy Sanity Studio
 
 - run `sanity deploy` to deploy the Sanity Studio to the cloud
