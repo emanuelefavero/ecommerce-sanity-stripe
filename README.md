@@ -22,9 +22,16 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 - [Connect your app to Sanity](#connect-your-app-to-sanity)
 - [Fetch Sanity data](#fetch-sanity-data)
 - [Setup Revalidation](#setup-revalidation)
+- [**Stripe**](#stripe)
+- [Install Stripe](#install-stripe)
 - [Setup Stripe](#setup-stripe)
+- [Create a Stripe API endpoint](#create-a-stripe-api-endpoint)
+- [Create an instance of Stripe](#create-an-instance-of-stripe)
+- [Create a checkout button](#create-a-checkout-button)
+- [Create a success page](#create-a-success-page)
+- [Create a canceled page](#create-a-canceled-page)
 - [Deploy App to Vercel](#deploy-app-to-vercel)
-- [Deploy Sanity Studio](#deploy-sanity-studio)
+- [**Deploy Sanity Studio**](#deploy-sanity-studio)
 - [Useful Sanity commands](#useful-sanity-commands)
 
 &nbsp;
