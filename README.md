@@ -496,10 +496,12 @@ const handleCheckout = async () => {
 
 ## Deploy App to Vercel
 
+- if Vercel gives you an error from the sanity project directory (`sanity-ecommerce`), you can ignore the directory on deploy by adding a `.vercelignore` file at the root of the project and adding the `sanity-ecommerce` folder to it
 - add a `.vercelignore` file in the root directory and add the `sanity-pineapple` folder to it to ignore it when deploying to Vercel
 - remember to add the following environment variables to Vercel:
 
 ```bash
+NEXT_PUBLIC_SANITY_PROJECT_ID
 NEXT_PUBLIC_SANITY_TOKEN
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 NEXT_PUBLIC_STRIPE_SECRET_KEY
