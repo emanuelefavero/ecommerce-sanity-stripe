@@ -45,6 +45,7 @@ This is an E-commerce application built with Sanity, Next.js, and Stripe.
 
 - clone this repo and `cd` into it
 - run `npm install` to install all dependencies
+- `cd` into the `sanity-ecommerce` folder and run `npm install` to install all Sanity dependencies
 
 - create a `.env.local` file in the root directory and add the following:
 
@@ -509,7 +510,7 @@ NEXT_PUBLIC_STRIPE_SECRET_KEY
 
 ## Deploy Sanity Studio
 
-- run `sanity deploy` to deploy the Sanity Studio to the cloud
+- `cd` into the `sanity-ecommerce` folder and run `sanity deploy` to deploy the Sanity Studio to the cloud
 - choose a name for your Studio hostname (e.g. `emanuelefavero-ecommerce`)
 - share the link with your team members or clients
 
